@@ -5,7 +5,7 @@
 * Open VersionInfo.ps1 Properties and unblock it
 * Open VersionInfo.ps1 in notepad or any other text editor
 * Set $filePath to the File Path of a .txt file with a list of computers names (Copy as Path)
-* Set $applicationFilePath to the path from "c$\" of the application you want to get the version of (Copy as Path) (Make sure to remove everything before and including "c$\" or "C:\")
+* Set \$applicationFilePath to the path from "c\$\" of the application you want to get the version of (Copy as Path) (Make sure to remove everything before and including "c$\" or "C:\")
 * Set $outputFile to the File Path of where you want the output log (Copy as Path) (Script will create the file if it doesn't exist)
 * Save VersionInfo.ps1
 
