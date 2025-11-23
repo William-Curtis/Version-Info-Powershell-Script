@@ -1,4 +1,4 @@
-# Version-Info-Powershell-Script
+# Version Info Powershell Script
 
 [Setup]
 * Copy VersionInfo.ps1 into C:\temp
