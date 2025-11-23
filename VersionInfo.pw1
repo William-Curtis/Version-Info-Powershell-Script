@@ -1,0 +1,37 @@
+function Get-ApplicationVersion {
+    param (
+        [string]$FilePath
+    )
+
+    if (-not (Test-Path $FilePath)) {
+        # Write-Error "File not found: $FilePath"
+        return
+    }
+
+    try {
+        $versionInfo = (Get-Item $FilePath).VersionInfo
+        return $versionInfo
+    }
+    catch {
+        # Write-Error "Unable to get version info for: $FilePath"
+    }
+}
+
+# File Path of a .txt file with a list of computers names (Copy as Path)
+$filePath = "C:\temp\ComputerName.txt"
+$fileContent = Get-Content -Path $filePath
+# the path from "c$\" of the application you want to get the version of (Copy as Path) (Make sure to remove everything before and including "c$\" or "C:\")
+$applicationFilePath = "Program Files\...\application.exe"
+# File Path of where you want the output log (Copy as Path) (Script will create the file if it doesn't exist)
+$outputFile = "C:\Temp\VersionInfoLog.txt"
+
+foreach ($device in $fileContent) {
+    $version = Get-ApplicationVersion -FilePath ("\\" + $device + "\c$\" + $applicationFilePath)
+    if ($version) {
+        "$device - Version: $($version.FileVersion)" >> $outputFile
+    }
+    else {
+        "$device - File Path Not Found" >> $outputFile
+    }
+}
+Write-Host "VersionInfo Script Completed"
